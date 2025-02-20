@@ -72,16 +72,16 @@ body {
   font-size: 28px;
 }
 
-.weather.box {
+.weather-box {
   text-align: center;
 }
 
-.weather.box img {
+.weather-box img {
   width: 60%;
   margin-top: 30px;
 }
 
-.weather.box .temperature {
+.weather-box .temperature {
   position: relative;
   color: #06283d;
   font-size: 4rem;
@@ -90,13 +90,13 @@ body {
   margin-left: -16px;
 }
 
-.weather.box .temperature span {
+.weather-box .temperature span {
   position: absolute;
   margin-left: 4px;
   font-size: 1.5rem;
 }
 
-.weather.box .description {
+.weather-box .description {
   color: #06283d;
   font-size: 22px;
   font-weight: 500;
@@ -167,7 +167,7 @@ body {
   margin-top: 12px;
 }
 
-.weather.box,
+.weather-box,
 .weather-details {
   scale: 0;
   opacity: 0;
