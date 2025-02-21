@@ -4,14 +4,31 @@ const weatherBox = document.querySelector(".weather-box");
 const weatherDetails = document.querySelector(".weather-details");
 const error404 = document.querySelector(".not-found");
 
-search.addEventListener("click", () => {
-  const APIKey = "Enter your API_Key";
+async function getApiKey() {
+  try {
+    const response = await fetch("http://localhost:3000/api/key");
+    const data = await response.json();
+    return data.apiKey;
+  } catch (error) {
+    console.error("Error fetching the API Key:", error);
+    return null;
+  }
+}
+
+search.addEventListener("click", async () => {
   const city = document.querySelector(".search-box input").value;
 
   if (city === "") return;
 
+  const API_KEY = await getApiKey();
+
+  if (!API_KEY) {
+    console.error("Error");
+    return;
+  }
+
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
   )
     .then((response) => response.json())
     .then((json) => {
@@ -53,7 +70,7 @@ search.addEventListener("click", () => {
           break;
 
         case "Haze":
-          image.src = "i=assets/mist.png";
+          image.src = "assets/mist.png";
           break;
 
         default:
